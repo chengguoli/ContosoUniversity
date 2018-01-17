@@ -65,13 +65,17 @@ namespace ContosoUniversity.Migrations
                     b.Property<string>("Name")
                         .HasMaxLength(50);
 
+                    b.Property<byte[]>("RowVersion")
+                        .IsConcurrencyToken()
+                        .ValueGeneratedOnAddOrUpdate();
+
                     b.Property<DateTime>("StartDate");
 
                     b.HasKey("DepartmentID");
 
                     b.HasIndex("InstructorID");
 
-                    b.ToTable("Department");
+                    b.ToTable("Departments");
                 });
 
             modelBuilder.Entity("ContosoUniversity.Models.Enrollment", b =>
@@ -104,7 +108,7 @@ namespace ContosoUniversity.Migrations
                         .HasColumnName("FirstName")
                         .HasMaxLength(50);
 
-                    b.Property<DateTime>("HireDate");
+                    b.Property<DateTime?>("HireDate");
 
                     b.Property<string>("LastName")
                         .IsRequired()
@@ -158,7 +162,7 @@ namespace ContosoUniversity.Migrations
             modelBuilder.Entity("ContosoUniversity.Models.CourseAssignment", b =>
                 {
                     b.HasOne("ContosoUniversity.Models.Course", "Course")
-                        .WithMany("CourseAssignment")
+                        .WithMany("CourseAssignments")
                         .HasForeignKey("CourseID")
                         .OnDelete(DeleteBehavior.Cascade);
 

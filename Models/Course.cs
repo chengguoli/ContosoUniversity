@@ -18,7 +18,7 @@ namespace ContosoUniversity.Models
 
 
         public ICollection<Enrollment> Enrollments {get;set;}
-        public ICollection<CourseAssignment> CourseAssignment {get;set;}
+        public ICollection<CourseAssignment> CourseAssignments {get;set;}
         
     }
 }
